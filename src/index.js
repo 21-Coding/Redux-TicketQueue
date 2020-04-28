@@ -9,6 +9,12 @@ import { Provider } from 'react-redux';
 
 const store = createStore(reducer);
 
+//notifies you when the reducer changes the state
+store.subscribe(() =>
+  console.log(store.getState())
+);
+
+
 ReactDOM.render(
   <Provider store={store}>
     <App />,
