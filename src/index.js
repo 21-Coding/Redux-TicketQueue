@@ -7,6 +7,7 @@ import { createStore } from 'redux';
 import reducer from './reducers/ticket-list-reducer';
 import { Provider } from 'react-redux';
 
+
 const store = createStore(reducer);
 
 //notifies you when the reducer changes the state
