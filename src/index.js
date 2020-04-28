@@ -4,11 +4,14 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
-import reducer from './reducers/ticket-list-reducer';
+// import reducer from './reducers/ticket-list-reducer';
 import { Provider } from 'react-redux';
+import rootReducer from './reducers/index';
+
+const store = createStore(rootReducer);
 
 
-const store = createStore(reducer);
+// const store = createStore(reducer);
 
 //notifies you when the reducer changes the state
 store.subscribe(() =>
@@ -18,7 +21,7 @@ store.subscribe(() =>
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />,
+    <App />
   </Provider>,
   document.getElementById('root')
 );
