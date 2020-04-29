@@ -5,6 +5,7 @@ import TicketDetail from './TicketDetail';
 import EditTicketForm from './EditTicketForm';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
+import * as a from './../actions';
 
 class TicketControl extends React.Component {
 
@@ -20,19 +21,12 @@ class TicketControl extends React.Component {
 
 
   handleClick = () => {
-    if (this.state.selectedTicket != null) {
-      this.setState({
-        selectedTicket: null,
-        editing: false
-      });
-    } else {
-      const { dispatch } = this.props;
-      const action = {
-        type: 'TOGGLE_FORM'
-      }
-      dispatch(action);
-    }
+    const { dispatch } = this.props;
+    const action = a.toggleForm();
+    dispatch(action);
+    this.setState({ selectedTicket: null });
   }
+
 
   handleAddingNewTicketToList = (newTicket) => {
     const { dispatch } = this.props;
