@@ -1,5 +1,6 @@
 import ticketListReducer from '../../reducers/ticket-list-reducer';
 import * as c from './../../actions';
+import Moment from 'moment';
 //variable = ticketListReducer
 //ticketListReducer takes 2 arguments (1: current state, 2: an action being applied to the current state)
 describe('ticketListReducer', () => {
@@ -52,14 +53,16 @@ describe('ticketListReducer', () => {
     expect(ticketListReducer({}, { type: null })).toEqual({});
   });
 
-  test('Should successfully add new ticket data to masterTicketList', () => {
-    const { names, location, issue, id } = ticketData;
+  test('Should successfully add a ticket list that includes Moment-formatted wait times', () => {
+    const { names, location, issue, timeOpen, id } = ticketData;
     action = {
       type: 'ADD_TICKET',
       names: names,
       location: location,
       issue: issue,
-      id: id
+      timeOpen: timeOpen,
+      id: id,
+      formattedWaitTime: new Moment().fromNow(true)
     };
 
     expect(ticketListReducer({}, action)).toEqual({
@@ -67,7 +70,9 @@ describe('ticketListReducer', () => {
         names: names,
         location: location,
         issue: issue,
-        id: id
+        timeOpen: timeOpen,
+        id: id,
+        formattedWaitTime: 'a few seconds'
       }
     });
   });
