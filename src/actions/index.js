@@ -1,3 +1,5 @@
+import formVisibleReducer from "../reducers/form-visible-reducer";
+
 export const deleteTicket = id => ({
   type: 'DELETE_TICKET',
   id
@@ -8,12 +10,20 @@ export const toggleForm = () => ({
 });
 
 export const addTicket = (ticket) => {
-  const { names, location, issue, id } = ticket;
+  const { names, location, issue, formattedWaitTime, timeOpen, id } = ticket;
   return {
     type: 'ADD_TICKET',
     names: names,
     location: location,
     issue: issue,
+    formattedWaitTime,
+    timeOpen: timeOpen,
     id: id
   }
 }
+
+export const updateTime = (id, formattedWaitTime) => ({
+  type: 'UPDATE_TIME',
+  id: id,
+  formattedWaitTime: formattedWaitTime
+});
