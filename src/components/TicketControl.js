@@ -9,6 +9,7 @@ import * as a from './../actions';
 import Moment from 'moment';
 import { withFirestore } from 'react-redux-firebase';
 
+
 class TicketControl extends React.Component {
 
   constructor(props) {
@@ -55,8 +56,16 @@ class TicketControl extends React.Component {
   }
 
   handleChangingSelectedTicket = (id) => {
-    const selectedTicket = this.props.masterTicketList[id];
-    this.setState({ selectedTicket: selectedTicket });
+    // const selectedTicket = this.props.masterTicketList[id];
+    this.props.firestore.get({ collection: 'tickets', doc: id }).then((ticket) => {
+      const firestoreTicket = {
+        names: ticket.get("names"),
+        location: ticket.get("location"),
+        issue: ticket.get("issue"),
+        id: ticket.id
+      }
+      this.setState({ selectedTicket: firestoreTicket });
+    })
   }
 
   handleDeletingTicket = (id) => {
@@ -116,7 +125,7 @@ TicketControl.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterTicketList: state.masterTicketList,
+    // masterTicketList: state.masterTicketList,
     formVisibleOnPage: state.formVisibleOnPage
   }
 }
