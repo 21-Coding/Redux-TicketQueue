@@ -12,17 +12,17 @@ describe('help queue actions', () => {
       type: 'TOGGLE_FORM'
     });
   });
-  it('addTicket should create ADD_TICKET action', () => {
-    expect(actions.addTicket({ names: 'Jo and Jasmine', location: '3E', issue: 'Redux not working!', timeOpen: 0, formattedWaitTime: "A few seconds", id: 1 })).toEqual({
-      type: 'ADD_TICKET',
-      names: 'Jo and Jasmine',
-      location: '3E',
-      issue: 'Redux not working!',
-      timeOpen: 0,
-      formattedWaitTime: 'A few seconds',
-      id: 1
-    });
-  });
+  // it('addTicket should create ADD_TICKET action', () => {
+  //   expect(actions.addTicket({ names: 'Jo and Jasmine', location: '3E', issue: 'Redux not working!', timeOpen: 0, formattedWaitTime: "A few seconds", id: 1 })).toEqual({
+  //     type: 'ADD_TICKET',
+  //     names: 'Jo and Jasmine',
+  //     location: '3E',
+  //     issue: 'Redux not working!',
+  //     timeOpen: 0,
+  //     formattedWaitTime: 'A few seconds',
+  //     id: 1
+  //   });
+  // });
   it('updateTime should create UPDATE_TIME action', () => {
     expect(actions.updateTime(1, "A few seconds")).toEqual({
       type: 'UPDATE_TIME',
