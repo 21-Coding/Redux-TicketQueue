@@ -40,8 +40,6 @@ class TicketControl extends React.Component {
     })
   }
 
-
-
   handleClick = () => {
     const { dispatch } = this.props;
     const action = a.toggleForm();
@@ -56,7 +54,6 @@ class TicketControl extends React.Component {
   }
 
   handleChangingSelectedTicket = (id) => {
-    // const selectedTicket = this.props.masterTicketList[id];
     this.props.firestore.get({ collection: 'tickets', doc: id }).then((ticket) => {
       const firestoreTicket = {
         names: ticket.get("names"),
@@ -65,7 +62,7 @@ class TicketControl extends React.Component {
         id: ticket.id
       }
       this.setState({ selectedTicket: firestoreTicket });
-    })
+    });
   }
 
   handleDeletingTicket = (id) => {
@@ -79,15 +76,15 @@ class TicketControl extends React.Component {
     this.setState({ editing: true });
   }
 
-  // handleEditingTicketInList = (ticketToEdit) => {
-  //   const { dispatch } = this.props;
-  //   const action = a.addTicket(ticketToEdit);
-  //   dispatch(action);
-  //   this.setState({
-  //     editing: false,
-  //     selectedTicket: null
-  //   });
-  // }
+  handleEditingTicketInList = () => {
+    // const { dispatch } = this.props;
+    // const action = a.addTicket(ticketToEdit);
+    // dispatch(action);
+    this.setState({
+      editing: false,
+      selectedTicket: null
+    });
+  }
 
   render() {
     let currentlyVisibleState = null;

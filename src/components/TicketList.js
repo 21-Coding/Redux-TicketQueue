@@ -7,8 +7,8 @@ import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 function TicketList(props) {
   useFirestoreConnect([
     {
-      collection: 'tickets',
-      // doc: ticketId
+      collection: 'tickets'
+      // doc: ticket.id
     }
   ]);
 
