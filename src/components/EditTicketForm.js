@@ -5,8 +5,9 @@ import { useFirestore } from 'react-redux-firebase';
 import ticketListReducer from "../reducers/ticket-list-reducer";
 
 function EditTicketForm(props) {
-  const { ticket } = props;
+
   const firestore = useFirestore();
+  const { ticket } = props;
 
   function handleEditTicketFormSubmission(event) {
     event.preventDefault();
@@ -14,8 +15,7 @@ function EditTicketForm(props) {
     const propertiesToUpdate = {
       names: event.target.names.value,
       location: event.target.location.value,
-      issue: event.target.issue.value,
-      // id: ticket.id
+      issue: event.target.issue.value
     }
     return firestore.update({ collection: 'tickets', doc: ticket.id }, propertiesToUpdate)
   }
