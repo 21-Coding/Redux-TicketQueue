@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Ticket from "./Ticket";
 import { useSelector } from 'react-redux';
-import { useFirestoreConnect, isLoaded, isEmpty }
-  from 'react-redux-firebase';
+import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 
 function TicketList(props) {
   useFirestoreConnect([

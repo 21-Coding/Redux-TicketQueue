@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import * as a from './../actions';
 import Moment from 'moment';
+import { withFirestore } from 'react-redux-firebase';
 
 class TicketControl extends React.Component {
 
@@ -122,4 +123,6 @@ const mapStateToProps = state => {
 
 TicketControl = connect(mapStateToProps)(TicketControl);
 
-export default TicketControl;
+// export default TicketControl;
+
+export default withFirestore(TicketControl);

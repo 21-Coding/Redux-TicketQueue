@@ -8,7 +8,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers/index';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
-import { createFirestoreinstance } from 'redux-firestore';
+import { createFirestoreInstance } from 'redux-firestore';
 import firebase from "./firebase";
 
 const store = createStore(rootReducer);
@@ -19,16 +19,16 @@ const rrfProps = {
     userProfile: "users"
   },
   dispatch: store.dispatch,
-  createFirestoreinstance
+  createFirestoreInstance
 }
 
 
 // const store = createStore(reducer);
 
 //notifies you when the reducer changes the state
-store.subscribe(() =>
-  console.log(store.getState())
-);
+// store.subscribe(() =>
+//   console.log(store.getState())
+// );
 
 
 ReactDOM.render(
